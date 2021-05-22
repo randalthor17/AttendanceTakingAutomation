@@ -46,7 +46,7 @@ def print_absentee_message(presentee_count, absentee_count):
     print('Total Student : ' + str(TOTAL))
     print('Present       : ' + str(presentee_count))
     print('Absent        : ' + str(absentee_count))
-    print('Name of FM. D  : ANK')
+    print('Name of FM.   : ANK')
 
 
 if __name__=='__main__':
