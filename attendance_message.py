@@ -109,7 +109,9 @@ def create_url(absentee_list, absentee_count, presentee_count):
         student_list = csv_to_dict('student_list.csv')
         with open('url.txt', mode = 'a', newline = '') as url_file:
             url_file.write(url_src[0])
-            submitter = input('Write your nickname and roll (like this: Auhon+5717 with no spaces): ')
+            submitter = input('Write your nickname and roll (like this: Auhon+5717 with no spaces, if kept blank, the default is Auhon+5717): ')
+            if submitter == '':
+                submitter = 'Auhon+5717'
             url_file.write('&' + url_src[1] + '=' + submitter)
             url_file.write('&' + url_src[2] + '=' + get_date_weekday())
             url_file.write('&' + url_src[3] + '=' + str(TOTAL))
@@ -118,11 +120,13 @@ def create_url(absentee_list, absentee_count, presentee_count):
             for roll in student_list:
                 if roll in absentee_list:
                     url_file.write('&' + url_src[6] + '=' + student_list[roll])
-            comment = input('Enter Comment: ')
+            comment = input('Enter Comment (Default is: Nothing unusual today.): ')
+            if comment == '':
+                comment = 'Nothing unusual today.'
             comment = comment.replace(' ', '+')
             url_file.write('&' + url_src[7] + '=' + comment)
-    print('Now we will open your browser and show you the pre-filled Google forns. Just submit it.')
-    sleep(2)
+    print('Now we will open your browser and show you the pre-filled Google forms. Just submit it.')
+    sleep(1)
     open_url('url.txt')
     
 
