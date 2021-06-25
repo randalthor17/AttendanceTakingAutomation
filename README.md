@@ -4,4 +4,4 @@ This is a program that I wrote for myself and for my friends to automate our att
 
 ## Disclaimer:
 
-This is a hobby project of mine. It is complete for now, but it may have bugs. Just create an issue if there are any, and I'll try toi solve the problems when I'm free.
+This is a hobby project of mine. It is complete for now, but it may have bugs. Just create an issue if there are any, and I'll try to solve the problems when I'm free.
