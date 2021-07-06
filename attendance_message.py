@@ -120,6 +120,8 @@ def create_url(absentee_list, absentee_count, presentee_count):
             for roll in student_list:
                 if roll in absentee_list:
                     url_file.write('&' + url_src[6] + '=' + student_list[roll])
+            if absentee_count == 0:
+                url_file.write('&' + url_src[6] + '=None')
             comment = input('Enter Comment (Default is: Nothing unusual today.): ')
             if comment == '':
                 comment = 'Nothing unusual today.'
