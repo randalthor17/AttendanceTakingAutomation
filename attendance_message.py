@@ -5,10 +5,10 @@ import webbrowser
 from time import sleep
 
 TOTAL = 59
-
+ATTENDANCE_CSV = "Attendance.csv"
 
 def main():
-    dict = csv_to_dict("Attendence.csv")
+    dict = csv_to_dict(ATTENDANCE_CSV)
     absentee_list = check_absentees(dict)
     correct_absentee_list(absentee_list)
     absentee_count = len(absentee_list)
