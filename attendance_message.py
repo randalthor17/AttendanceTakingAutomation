@@ -6,6 +6,7 @@ from time import sleep
 
 TOTAL = 59
 ATTENDANCE_CSV = "Attendance.csv"
+DEFAULT_SUBMITTER = 'Auhon+5717'
 
 def main():
     dict = csv_to_dict(ATTENDANCE_CSV)
@@ -18,6 +19,7 @@ def main():
     print_list(absentee_list)
     input("When you're done submitting the contacts, just hit enter.")
     create_url(absentee_list, absentee_count, presentee_count)
+    exit()
 
 
 def csv_to_dict(attendance_file):
@@ -120,9 +122,9 @@ def create_url(absentee_list, absentee_count, presentee_count):
         with open('url.txt', mode='a', newline='') as url_file:
             url_file.write(url_src[0])
             submitter = input(
-                'Write your nickname and roll (like this: Auhon+5717 with no spaces, if kept blank, the default is Auhon+5717): ')
+                'Write your nickname and roll (like this: Auhon+5717 with no spaces, if kept blank, the default is ' +DEFAULT_SUBMITTER+ '): ')
             if submitter == '':
-                submitter = 'Auhon+5717'
+                submitter = DEFAULT_SUBMITTER
             url_file.write('&' + url_src[1] + '=' + submitter)
             url_file.write('&' + url_src[2] + '=' + get_date_weekday())
             url_file.write('&' + url_src[3] + '=' + str(TOTAL))
