@@ -14,7 +14,7 @@ def main():
     correct_absentee_list(absentee_list)
     absentee_count = len(absentee_list)
     presentee_count = TOTAL - absentee_count
-    print_absentee_message(presentee_count, absentee_count)
+    print_absentee_message(presentee_count, absentee_count, absentee_list)
     print('Here is the absentee list again, so that you may send the contact list to the Attendance Collection Group.')
     print_list(absentee_list)
     input("When you're done submitting the contacts, just hit enter.")
@@ -54,19 +54,19 @@ def get_date_weekday():
     return today
 
 
-def print_absentee_message(presentee_count, absentee_count):
+def print_absentee_message(presentee_count, absentee_count, absentee_list):
+    absentee_add_zero(absentee_count)
     print('This is the message you may copy and paste to Whatsapp Attendance Collection Group.')
     print('-----------------------------------------------------------------------------------')
     print()
     print('@ANK Sir')
     print('Daily Attendance:')
     print('Date: ' + get_date())
-    print('Form & Section : ')
-    print('X Sci-A (BMMS)')
-    print('Total Student : ' + str(TOTAL))
-    print('Present       : ' + str(presentee_count))
-    print('Absent        : ' + str(absentee_count))
-    print('Name of FM.   : ANK')
+    print('Form & Section : X Sci-A (BMMS)')
+    print('Total Student  : ' + str(TOTAL))
+    print('Present        : ' + str(presentee_count))
+    print('Absent         : ' + str(absentee_count) + ' (' + ', '.join(absentee_list) + ')')
+    print('Name of FM.    : ANK')
     print('\n')
     input("When you're done submitting the contacts, just hit enter.")
     print()
@@ -116,6 +116,7 @@ def print_list(list):
 
 
 def create_url(absentee_list, absentee_count, presentee_count):
+    absentee_add_zero(absentee_count)
     with open('url_format.txt', 'r') as txt:
         url_src = txt.read().splitlines()
         student_list = csv_to_dict('student_list.csv')
@@ -152,6 +153,10 @@ def open_url(url_file):
     webbrowser.open(url, new=2)
     url_file.truncate(0)
     url_file.close()
+
+def absentee_add_zero(absentee_count):
+    if absentee_count >= 0 and absentee_count < 10:
+        absentee_count = '0' + str(absentee_count)
 
 
 if __name__ == '__main__':
