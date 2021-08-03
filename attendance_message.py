@@ -55,7 +55,7 @@ def get_date_weekday():
 
 
 def print_absentee_message(presentee_count, absentee_count, absentee_list):
-    absentee_add_zero(absentee_count)
+    absentee_count = absentee_add_zero(absentee_count)
     print('This is the message you may copy and paste to Whatsapp Attendance Collection Group.')
     print('-----------------------------------------------------------------------------------')
     print()
@@ -116,7 +116,7 @@ def print_list(list):
 
 
 def create_url(absentee_list, absentee_count, presentee_count):
-    absentee_add_zero(absentee_count)
+    absentee_count = absentee_add_zero(absentee_count)
     with open('url_format.txt', 'r') as txt:
         url_src = txt.read().splitlines()
         student_list = csv_to_dict('student_list.csv')
@@ -157,7 +157,7 @@ def open_url(url_file):
 def absentee_add_zero(absentee_count):
     if absentee_count >= 0 and absentee_count < 10:
         absentee_count = '0' + str(absentee_count)
-
+    return absentee_count
 
 if __name__ == '__main__':
     main()
